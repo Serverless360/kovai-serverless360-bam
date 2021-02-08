@@ -1,0 +1,555 @@
+{
+ "businessProcesses": [
+  {
+   "id": "1b634696-935e-4a09-802d-800f810b06ea",
+   "workspaceId": "54bd28a3-6b19-4460-99fd-1c7af29a03dc",
+   "name": "BookingProcessor",
+   "description": "",
+   "isTrackingEnabled": true,
+   "archiveMessages": false,
+   "overrideRunTimeConfiguration": false,
+   "createdAt": "0001-01-01T00:00:00",
+   "modifiedAt": "0001-01-01T00:00:00",
+   "businessTransactions": [
+    {
+     "id": "60701d24-3eb3-418c-a8a3-640fde37a735",
+     "name": "DetailsValidator",
+     "description": "",
+     "order": 0,
+     "direction": 1,
+     "stages": [
+      {
+       "id": "afeae4e4-7c74-46c8-8b39-087881a25426",
+       "name": "SendMsgToInvalidSub",
+       "stageExecutionId": 7,
+       "markTransactionAsComplete": false,
+       "markTransactionAsFailed": false,
+       "autoCompleteConditionalStage": false,
+       "stageProperties": [],
+       "businessTransactionId": "60701d24-3eb3-418c-a8a3-640fde37a735",
+       "reprocessConfiguration": null
+      },
+      {
+       "id": "c7ebd503-be65-4800-a302-76fbcf95510c",
+       "name": "FurtherStages",
+       "stageExecutionId": 4,
+       "markTransactionAsComplete": false,
+       "markTransactionAsFailed": false,
+       "autoCompleteConditionalStage": false,
+       "stageProperties": [],
+       "businessTransactionId": "60701d24-3eb3-418c-a8a3-640fde37a735",
+       "reprocessConfiguration": null
+      },
+      {
+       "id": "efa559fe-3c39-4f2a-a323-b707eaf875c2",
+       "name": "RequestReceived",
+       "stageExecutionId": 4,
+       "markTransactionAsComplete": false,
+       "markTransactionAsFailed": false,
+       "autoCompleteConditionalStage": false,
+       "stageProperties": [
+        {
+         "id": "140c19ff-a8d1-422b-b1a2-8a07e9b0a45a",
+         "name": "DriverID",
+         "dataType": "STRING",
+         "source": 2,
+         "value": "$.Content.DriverId",
+         "extractValueRegEx": "",
+         "isGlobalProperty": true,
+         "dateFormat": null,
+         "stageId": "efa559fe-3c39-4f2a-a323-b707eaf875c2",
+         "globalPropertyId": "41a112f4-18d3-42d3-96f8-c32d72ba20e3"
+        },
+        {
+         "id": "dea6ed25-e137-4482-a0d1-9bebf8077575",
+         "name": "Drop Location",
+         "dataType": "STRING",
+         "source": 2,
+         "value": "$.Content.Destination",
+         "extractValueRegEx": "",
+         "isGlobalProperty": false,
+         "dateFormat": null,
+         "stageId": "efa559fe-3c39-4f2a-a323-b707eaf875c2",
+         "globalPropertyId": null
+        },
+        {
+         "id": "c1cd92b9-c790-461e-88be-ada2bdad660c",
+         "name": "Pickup Location",
+         "dataType": "STRING",
+         "source": 2,
+         "value": "$.Content.UserLocation",
+         "extractValueRegEx": "",
+         "isGlobalProperty": false,
+         "dateFormat": null,
+         "stageId": "efa559fe-3c39-4f2a-a323-b707eaf875c2",
+         "globalPropertyId": null
+        },
+        {
+         "id": "6b4bcb14-4289-40ab-889f-c22f3dc07c71",
+         "name": "UserID",
+         "dataType": "STRING",
+         "source": 2,
+         "value": "$.Content.UserId",
+         "extractValueRegEx": "",
+         "isGlobalProperty": true,
+         "dateFormat": null,
+         "stageId": "efa559fe-3c39-4f2a-a323-b707eaf875c2",
+         "globalPropertyId": "26dd2e7e-abb0-4953-b921-ed6e898fbb4f"
+        },
+        {
+         "id": "5d3d37f3-a53b-4f8c-a614-ccf30559a66f",
+         "name": "BookingID",
+         "dataType": "STRING",
+         "source": 2,
+         "value": "$.BookingId",
+         "extractValueRegEx": "",
+         "isGlobalProperty": false,
+         "dateFormat": null,
+         "stageId": "efa559fe-3c39-4f2a-a323-b707eaf875c2",
+         "globalPropertyId": null
+        }
+       ],
+       "businessTransactionId": "60701d24-3eb3-418c-a8a3-640fde37a735",
+       "reprocessConfiguration": null
+      },
+      {
+       "id": "6bc6159e-4377-4bed-bab1-bb5719261feb",
+       "name": "RequestValidator",
+       "stageExecutionId": 9,
+       "markTransactionAsComplete": false,
+       "markTransactionAsFailed": false,
+       "autoCompleteConditionalStage": false,
+       "stageProperties": [],
+       "businessTransactionId": "60701d24-3eb3-418c-a8a3-640fde37a735",
+       "reprocessConfiguration": null
+      },
+      {
+       "id": "4ab05f54-e5b7-4664-9e30-ef4827eb6016",
+       "name": "SendMsgToValidSub",
+       "stageExecutionId": 7,
+       "markTransactionAsComplete": false,
+       "markTransactionAsFailed": false,
+       "autoCompleteConditionalStage": false,
+       "stageProperties": [],
+       "businessTransactionId": "60701d24-3eb3-418c-a8a3-640fde37a735",
+       "reprocessConfiguration": null
+      }
+     ],
+     "businessProcessId": "1b634696-935e-4a09-802d-800f810b06ea",
+     "defaultReprocessStageName": "RequestReceived",
+     "transactionConfiguration": {
+      "class": "serializedConfig",
+      "nodeDataArray": [
+       {
+        "name": "Start",
+        "key": "4412145f-00d6-4660-bd6d-c2ecc7dc7853",
+        "id": "4412145f-00d6-4660-bd6d-c2ecc7dc7853",
+        "category": "Start",
+        "location": {
+         "class": "go.Point",
+         "x": -137.003311,
+         "y": -152.015167
+        },
+        "stage": null
+       },
+       {
+        "name": "End",
+        "key": "2aee1a7d-16ae-4e54-86b7-2dfeee05fa97",
+        "id": "2aee1a7d-16ae-4e54-86b7-2dfeee05fa97",
+        "category": "End",
+        "location": {
+         "class": "go.Point",
+         "x": -141.102341,
+         "y": 604.479
+        },
+        "stage": null
+       },
+       {
+        "name": "RequestReceived",
+        "key": "efa559fe-3c39-4f2a-a323-b707eaf875c2",
+        "id": "efa559fe-3c39-4f2a-a323-b707eaf875c2",
+        "category": "Normal",
+        "location": {
+         "class": "go.Point",
+         "x": -137.15155,
+         "y": -46.2572136
+        },
+        "stage": {
+         "id": "efa559fe-3c39-4f2a-a323-b707eaf875c2",
+         "name": "RequestReceived",
+         "stageExecutionId": 4,
+         "markTransactionAsComplete": false,
+         "markTransactionAsFailed": false,
+         "autoCompleteConditionalStage": false,
+         "stageProperties": [
+          {
+           "id": "140c19ff-a8d1-422b-b1a2-8a07e9b0a45a",
+           "name": "DriverID",
+           "dataType": "STRING",
+           "source": 2,
+           "value": "$.Content.DriverId",
+           "extractValueRegEx": "",
+           "isGlobalProperty": true,
+           "dateFormat": null,
+           "stageId": "efa559fe-3c39-4f2a-a323-b707eaf875c2",
+           "globalPropertyId": "41a112f4-18d3-42d3-96f8-c32d72ba20e3"
+          },
+          {
+           "id": "dea6ed25-e137-4482-a0d1-9bebf8077575",
+           "name": "Drop Location",
+           "dataType": "STRING",
+           "source": 2,
+           "value": "$.Content.Destination",
+           "extractValueRegEx": "",
+           "isGlobalProperty": false,
+           "dateFormat": null,
+           "stageId": "efa559fe-3c39-4f2a-a323-b707eaf875c2",
+           "globalPropertyId": null
+          },
+          {
+           "id": "c1cd92b9-c790-461e-88be-ada2bdad660c",
+           "name": "Pickup Location",
+           "dataType": "STRING",
+           "source": 2,
+           "value": "$.Content.UserLocation",
+           "extractValueRegEx": "",
+           "isGlobalProperty": false,
+           "dateFormat": null,
+           "stageId": "efa559fe-3c39-4f2a-a323-b707eaf875c2",
+           "globalPropertyId": null
+          },
+          {
+           "id": "6b4bcb14-4289-40ab-889f-c22f3dc07c71",
+           "name": "UserID",
+           "dataType": "STRING",
+           "source": 2,
+           "value": "$.Content.UserId",
+           "extractValueRegEx": "",
+           "isGlobalProperty": true,
+           "dateFormat": null,
+           "stageId": "efa559fe-3c39-4f2a-a323-b707eaf875c2",
+           "globalPropertyId": "26dd2e7e-abb0-4953-b921-ed6e898fbb4f"
+          },
+          {
+           "id": "5d3d37f3-a53b-4f8c-a614-ccf30559a66f",
+           "name": "BookingID",
+           "dataType": "STRING",
+           "source": 2,
+           "value": "$.BookingId",
+           "extractValueRegEx": "",
+           "isGlobalProperty": false,
+           "dateFormat": null,
+           "stageId": "efa559fe-3c39-4f2a-a323-b707eaf875c2",
+           "globalPropertyId": null
+          }
+         ],
+         "businessTransactionId": "60701d24-3eb3-418c-a8a3-640fde37a735",
+         "reprocessConfiguration": null
+        }
+       },
+       {
+        "name": "SendMsgToValidSub",
+        "key": "4ab05f54-e5b7-4664-9e30-ef4827eb6016",
+        "id": "4ab05f54-e5b7-4664-9e30-ef4827eb6016",
+        "category": "Normal",
+        "location": {
+         "class": "go.Point",
+         "x": -318.285736,
+         "y": 285.985565
+        },
+        "stage": {
+         "id": "4ab05f54-e5b7-4664-9e30-ef4827eb6016",
+         "name": "SendMsgToValidSub",
+         "stageExecutionId": 7,
+         "markTransactionAsComplete": false,
+         "markTransactionAsFailed": false,
+         "autoCompleteConditionalStage": false,
+         "stageProperties": [],
+         "businessTransactionId": "60701d24-3eb3-418c-a8a3-640fde37a735",
+         "reprocessConfiguration": null
+        }
+       },
+       {
+        "name": "FurtherStages",
+        "key": "c7ebd503-be65-4800-a302-76fbcf95510c",
+        "id": "c7ebd503-be65-4800-a302-76fbcf95510c",
+        "category": "Normal",
+        "location": {
+         "class": "go.Point",
+         "x": -141.312775,
+         "y": 490.967316
+        },
+        "stage": {
+         "id": "c7ebd503-be65-4800-a302-76fbcf95510c",
+         "name": "FurtherStages",
+         "stageExecutionId": 4,
+         "markTransactionAsComplete": false,
+         "markTransactionAsFailed": false,
+         "autoCompleteConditionalStage": false,
+         "stageProperties": [],
+         "businessTransactionId": "60701d24-3eb3-418c-a8a3-640fde37a735",
+         "reprocessConfiguration": null
+        }
+       },
+       {
+        "name": "RequestValidator",
+        "key": "6bc6159e-4377-4bed-bab1-bb5719261feb",
+        "id": "6bc6159e-4377-4bed-bab1-bb5719261feb",
+        "category": "Conditional",
+        "location": {
+         "class": "go.Point",
+         "x": -138.762,
+         "y": 115.5
+        },
+        "stage": {
+         "id": "6bc6159e-4377-4bed-bab1-bb5719261feb",
+         "name": "RequestValidator",
+         "stageExecutionId": 9,
+         "markTransactionAsComplete": false,
+         "markTransactionAsFailed": false,
+         "autoCompleteConditionalStage": false,
+         "stageProperties": [],
+         "businessTransactionId": "60701d24-3eb3-418c-a8a3-640fde37a735",
+         "reprocessConfiguration": null
+        }
+       },
+       {
+        "name": "SendMsgToInvalidSub",
+        "key": "afeae4e4-7c74-46c8-8b39-087881a25426",
+        "id": "afeae4e4-7c74-46c8-8b39-087881a25426",
+        "category": "Normal",
+        "location": {
+         "class": "go.Point",
+         "x": 48.9974442,
+         "y": 285.153839
+        },
+        "stage": {
+         "id": "afeae4e4-7c74-46c8-8b39-087881a25426",
+         "name": "SendMsgToInvalidSub",
+         "stageExecutionId": 7,
+         "markTransactionAsComplete": false,
+         "markTransactionAsFailed": false,
+         "autoCompleteConditionalStage": false,
+         "stageProperties": [],
+         "businessTransactionId": "60701d24-3eb3-418c-a8a3-640fde37a735",
+         "reprocessConfiguration": null
+        }
+       }
+      ],
+      "linkDataArray": [
+       {
+        "from": "4412145f-00d6-4660-bd6d-c2ecc7dc7853",
+        "to": "efa559fe-3c39-4f2a-a323-b707eaf875c2",
+        "points": [
+         -137.003311,
+         -127.241829,
+         -137.003311,
+         -117.241829,
+         -137.003311,
+         -104.499519,
+         -137.15155,
+         -104.499519,
+         -137.15155,
+         -91.75722,
+         -137.15155,
+         -81.75722
+        ],
+        "label": "Text",
+        "visible": false
+       },
+       {
+        "from": "4ab05f54-e5b7-4664-9e30-ef4827eb6016",
+        "to": "c7ebd503-be65-4800-a302-76fbcf95510c",
+        "points": [
+         -318.285736,
+         321.485565,
+         -318.285736,
+         331.485565,
+         -318.285736,
+         388.47644,
+         -141.312775,
+         388.47644,
+         -141.312775,
+         445.467316,
+         -141.312775,
+         455.467316
+        ],
+        "label": "Text",
+        "visible": false
+       },
+       {
+        "from": "6bc6159e-4377-4bed-bab1-bb5719261feb",
+        "to": "4ab05f54-e5b7-4664-9e30-ef4827eb6016",
+        "points": [
+         -275.018616,
+         115.5,
+         -285.018616,
+         115.5,
+         -285.018616,
+         199.180511,
+         -227.8387,
+         199.180511,
+         -227.8387,
+         285.985565,
+         -237.8387,
+         285.985565
+        ],
+        "label": "Yes",
+        "visible": true
+       },
+       {
+        "from": "c7ebd503-be65-4800-a302-76fbcf95510c",
+        "to": "2aee1a7d-16ae-4e54-86b7-2dfeee05fa97",
+        "points": [
+         -141.312775,
+         526.467346,
+         -141.312775,
+         536.467346,
+         -141.312775,
+         555.1622,
+         -141.102341,
+         555.1622,
+         -141.102341,
+         573.857,
+         -141.102341,
+         583.857
+        ],
+        "label": "Text",
+        "visible": false
+       },
+       {
+        "from": "6bc6159e-4377-4bed-bab1-bb5719261feb",
+        "to": "afeae4e4-7c74-46c8-8b39-087881a25426",
+        "points": [
+         -2.505393,
+         115.5,
+         7.494607,
+         115.5,
+         7.494607,
+         198.764648,
+         -47.555542,
+         198.764648,
+         -47.555542,
+         285.153839,
+         -37.555542,
+         285.153839
+        ],
+        "label": "No",
+        "visible": true
+       },
+       {
+        "from": "afeae4e4-7c74-46c8-8b39-087881a25426",
+        "to": "c7ebd503-be65-4800-a302-76fbcf95510c",
+        "points": [
+         48.9974442,
+         320.653839,
+         48.9974442,
+         330.653839,
+         48.9974442,
+         388.060577,
+         -141.312775,
+         388.060577,
+         -141.312775,
+         445.467316,
+         -141.312775,
+         455.467316
+        ],
+        "label": "Text",
+        "visible": false
+       },
+       {
+        "from": "efa559fe-3c39-4f2a-a323-b707eaf875c2",
+        "to": "6bc6159e-4377-4bed-bab1-bb5719261feb",
+        "points": [
+         -137.15155,
+         -10.7572136,
+         -137.15155,
+         -0.7572136,
+         -137.15155,
+         36.18367,
+         -138.762,
+         36.18367,
+         -138.762,
+         73.12455,
+         -138.762,
+         83.12455
+        ],
+        "label": "Text",
+        "visible": false
+       }
+      ]
+     },
+     "serializedConfig": null,
+     "purgeDays": 180
+    }
+   ],
+   "purgeConfig": null
+  }
+ ],
+ "globalProperties": [
+  {
+   "id": "90479ee4-3992-4ee9-9054-1547ee0fa1c3",
+   "workspaceId": "54bd28a3-6b19-4460-99fd-1c7af29a03dc",
+   "name": "sessionid",
+   "dataType": "NUMBER",
+   "dateFormat": "",
+   "modifiedAt": "2020-05-30T03:38:16.17"
+  },
+  {
+   "id": "12c8b5d3-43b1-444d-8ebf-5933da05aab7",
+   "workspaceId": "54bd28a3-6b19-4460-99fd-1c7af29a03dc",
+   "name": "Location",
+   "dataType": "STRING",
+   "dateFormat": "",
+   "modifiedAt": "2020-05-30T03:38:16.16"
+  },
+  {
+   "id": "91712dc8-e676-4449-97ea-9f6c22395c83",
+   "workspaceId": "54bd28a3-6b19-4460-99fd-1c7af29a03dc",
+   "name": "EventID",
+   "dataType": "STRING",
+   "dateFormat": "",
+   "modifiedAt": "2020-05-30T03:38:16.233"
+  },
+  {
+   "id": "8f802117-17d8-4328-93bf-b06f5ae97b45",
+   "workspaceId": "54bd28a3-6b19-4460-99fd-1c7af29a03dc",
+   "name": "CurrentTemperature",
+   "dataType": "STRING",
+   "dateFormat": "",
+   "modifiedAt": "2020-05-30T03:38:16.14"
+  },
+  {
+   "id": "41a112f4-18d3-42d3-96f8-c32d72ba20e3",
+   "workspaceId": "54bd28a3-6b19-4460-99fd-1c7af29a03dc",
+   "name": "DriverID",
+   "dataType": "STRING",
+   "dateFormat": "",
+   "modifiedAt": "2020-05-30T03:38:16.223"
+  },
+  {
+   "id": "76b5a16d-f316-4184-ab81-d27a1877091d",
+   "workspaceId": "54bd28a3-6b19-4460-99fd-1c7af29a03dc",
+   "name": "Section",
+   "dataType": "STRING",
+   "dateFormat": "",
+   "modifiedAt": "2020-05-30T03:38:16.18"
+  },
+  {
+   "id": "ee1c4239-cd26-43e3-a2dd-d646a5ac80eb",
+   "workspaceId": "54bd28a3-6b19-4460-99fd-1c7af29a03dc",
+   "name": "date",
+   "dataType": "DATE",
+   "dateFormat": "yyyy-mm-ddThh:mm:ss:ms",
+   "modifiedAt": "2020-07-07T15:12:16.98"
+  },
+  {
+   "id": "26dd2e7e-abb0-4953-b921-ed6e898fbb4f",
+   "workspaceId": "54bd28a3-6b19-4460-99fd-1c7af29a03dc",
+   "name": "UserID",
+   "dataType": "STRING",
+   "dateFormat": "",
+   "modifiedAt": "2020-05-30T03:38:16.2"
+  }
+ ]
+}

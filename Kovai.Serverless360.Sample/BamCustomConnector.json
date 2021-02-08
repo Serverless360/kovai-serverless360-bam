@@ -1,0 +1,547 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "SubscriptionID": {
+      "type": "string"
+    },
+    "BAMEndpoint": {
+      "type": "string"
+    },
+    "customApis_BAM2_0_name": {
+      "defaultValue": "BAM2.0",
+      "type": "string"
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]"
+    }
+  },
+  "variables": {},
+  "resources": [
+    {
+      "type": "Microsoft.Web/customApis",
+      "apiVersion": "2016-06-01",
+      "name": "[parameters('customApis_BAM2_0_name')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "description": "A sample custom API",
+        "displayName": "[parameters('customApis_BAM2_0_name')]",
+        "backendService": {
+          "serviceUrl": "[parameters('BAMEndpoint')]"
+        },
+        "connectionParameters": {
+          "api_key": {
+            "type": "securestring",
+            "uiDefinition": {
+              "displayName": "API Key",
+              "description": "The API Key for this api",
+              "tooltip": "Provide your API Key",
+              "constraints": {
+                "tabIndex": 2,
+                "clearText": false,
+                "required": "true"
+              }
+            }
+          }
+        },
+        "swagger": {
+          "swagger": "2.0",
+          "basePath": "/",
+          "definitions": {},
+          "host": "[skip(parameters('BAMEndpoint'),8)]",
+          "info": {
+            "title": "ServerLess360 Custom Connector",
+            "description": "ServerLess360 Custom connector helps you track your business processes.",
+            "version": "1.0.0"
+          },
+          "paths": {
+            "/api/StartTransaction": {
+              "post": {
+                "operationId": "StartTransaction",
+                "x-ms-visibility": "important",
+                "description": "This action will create a Transaction",
+                "summary": "Start Transaction",
+                "produces": [
+                  "application/json"
+                ],
+                "consumes": [
+                  "application/json"
+                ],
+                "parameters": [
+                  {
+                    "name": "Body",
+                    "in": "body",
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "MessageBody": {
+                          "type": "object",
+                          "description": "Message body passed to the http trigger",
+                          "x-ms-visibility": "important"
+                        },
+                        "MessageHeader": {
+                          "type": "object",
+                          "description": "Message header passed to the http trigger",
+                          "x-ms-visibility": "important"
+                        }
+                      }
+                    },
+                    "description": "Message body to get properties from the message payload.",
+                    "required": true
+                  },
+                  {
+                    "name": "SL360-BusinessProcess",
+                    "in": "header",
+                    "type": "string",
+                    "description": "Provide business process name.",
+                    "required": true
+                  },
+                  {
+                    "name": "SL360-Transaction",
+                    "in": "header",
+                    "type": "string",
+                    "description": "Provide transaction name.",
+                    "required": true
+                  },
+                  {
+                    "name": "SL360-Stage",
+                    "in": "header",
+                    "type": "string",
+                    "description": "Provide stage name.",
+                    "required": false
+                  },
+                  {
+                    "name": "SL360-StageStatus",
+                    "type": "string",
+                    "in": "header",
+                    "description": "Select the status of stage execution.",
+                    "required": false,
+                    "enum": [
+                      "Success",
+                      "Failure",
+                      "InProgress"
+                    ]
+                  },
+                  {
+                    "name": "SL360-ArchiveMessage",
+                    "in": "header",
+                    "type": "string",
+                    "description": "Set this flag as true to archive the message.",
+                    "required": false,
+                    "enum": [
+                      "True",
+                      "False"
+                    ]
+                  },
+                  {
+                    "name": "SL360-Exception",
+                    "in": "header",
+                    "type": "string",
+                    "required": false,
+                    "description": "If this stage has any exceptions."
+                  },
+                  {
+                    "name": "SL360-ExceptionCode",
+                    "in": "header",
+                    "type": "string",
+                    "required": false,
+                    "description": "If this stage has any exception code."
+                  },
+                  {
+                    "name": "SL360-BatchId",
+                    "in": "header",
+                    "type": "string",
+                    "required": false,
+                    "description": "If this logic app is a batched message provide batch id."
+                  },
+                  {
+                    "name": "SL360-IsTransactionComplete",
+                    "in": "header",
+                    "type": "string",
+                    "description": "Set this flag as true to mark the transaction instance as complete.",
+                    "required": false,
+                    "enum": [
+                      "True",
+                      "False"
+                    ]
+                  },
+                  {
+                    "name": "SL360-Workspace",
+                    "in": "header",
+                    "type": "string",
+                    "required": false,
+                    "description": "Workspace this Business Process belong to."
+                  }
+                ],
+                "responses": {
+                  "202": {
+                    "description": "Accepted",
+                    "x-ms-summary": "Returns the Transaction instance id",
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "TransactionInstanceId": {
+                          "type": "string",
+                          "description": "Transaction Instance Id"
+                        },
+                        "StageInstanceId": {
+                          "type": "string",
+                          "description": "Stage Instance Id"
+                        }
+                      }
+                    }
+                  }
+                },
+                "security": [
+                  {
+                    "apikeyQuery": []
+                  },
+                  {
+                    "apikeyHeader": []
+                  }
+                ]
+              }
+            },
+            "/api/CheckPoint": {
+              "post": {
+                "operationId": "CheckPoint",
+                "x-ms-visibility": "important",
+                "description": "This action will create a CheckPoint",
+                "summary": "CheckPoint",
+                "produces": [
+                  "application/json"
+                ],
+                "consumes": [
+                  "application/json"
+                ],
+                "parameters": [
+                  {
+                    "name": "Body",
+                    "in": "body",
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "MessageBody": {
+                          "type": "object",
+                          "description": "Message body passed to the http trigger",
+                          "x-ms-visibility": "important"
+                        },
+                        "MessageHeader": {
+                          "type": "object",
+                          "description": "Message header passed to the http trigger",
+                          "x-ms-visibility": "important"
+                        }
+                      }
+                    },
+                    "description": "Message body to get properties from the message payload.",
+                    "required": true
+                  },
+                  {
+                    "name": "SL360-TransactionInstanceId",
+                    "in": "header",
+                    "type": "string",
+                    "description": "Provide the transaction instance id.",
+                    "required": true
+                  },
+                  {
+                    "name": "SL360-Stage",
+                    "in": "header",
+                    "type": "string",
+                    "description": "Provide stage name.",
+                    "required": true
+                  },
+                  {
+                    "name": "SL360-StageStatus",
+                    "type": "string",
+                    "in": "header",
+                    "description": "Select the status of stage execution.",
+                    "required": true,
+                    "x-ms-visibility": "important",
+                    "enum": [
+                      "Success",
+                      "Failure",
+                      "InProgress"
+                    ]
+                  },
+                  {
+                    "name": "SL360-StageInstanceId",
+                    "in": "header",
+                    "type": "string",
+                    "description": "Provide the stage instance id.",
+                    "required": false
+                  },
+                  {
+                    "name": "SL360-ArchiveMessage",
+                    "in": "header",
+                    "type": "string",
+                    "description": "Set this flag as true to archive the message.",
+                    "required": false,
+                    "enum": [
+                      "True",
+                      "False"
+                    ]
+                  },
+                  {
+                    "name": "SL360-Exception",
+                    "in": "header",
+                    "type": "string",
+                    "required": false,
+                    "description": "If this stage has any exceptions."
+                  },
+                  {
+                    "name": "SL360-ExceptionCode",
+                    "in": "header",
+                    "type": "string",
+                    "required": false,
+                    "description": "If this stage has any exception code."
+                  },
+                  {
+                    "name": "SL360-BatchId",
+                    "in": "header",
+                    "type": "string",
+                    "required": false,
+                    "description": "If this logic app is a batched message provide batch id."
+                  },
+                  {
+                    "name": "SL360-IsTransactionComplete",
+                    "in": "header",
+                    "type": "string",
+                    "description": "Set this flag as true to mark the transaction instance as complete.",
+                    "required": false,
+                    "enum": [
+                      "True",
+                      "False"
+                    ]
+                  },
+                  {
+                    "name": "SL360-Workspace",
+                    "in": "header",
+                    "type": "string",
+                    "required": false,
+                    "description": "Workspace this Business Process belong to."
+                  }
+                ],
+                "responses": {
+                  "202": {
+                    "description": "Accepted",
+                    "x-ms-summary": "Returns the Stage instance id",
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "StageInstanceId": {
+                          "type": "string",
+                          "description": "Stage Instance Id"
+                        }
+                      }
+                    }
+                  }
+                },
+                "security": [
+                  {
+                    "apikeyQuery": []
+                  },
+                  {
+                    "apikeyHeader": []
+                  }
+                ]
+              }
+            },
+            "/api/CheckpointWithCorrelation": {
+              "post": {
+                "operationId": "CorrelationCheckpoint",
+                "x-ms-visibility": "important",
+                "description": "This action will create a checkpoint for Transaction Instance with the help of correlation properties",
+                "summary": "Checkpoint With Correlation",
+                "produces": [
+                  "application/json"
+                ],
+                "consumes": [
+                  "application/json"
+                ],
+                "parameters": [
+                  {
+                    "name": "Body",
+                    "in": "body",
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "MessageBody": {
+                          "type": "object",
+                          "description": "Message body passed to the http trigger",
+                          "x-ms-visibility": "important"
+                        },
+                        "MessageHeader": {
+                          "type": "object",
+                          "description": "Message header passed to the http trigger",
+                          "x-ms-visibility": "important"
+                        },
+                        "Property": {
+                          "type": "array",
+                          "description": "Message body passed to the http trigger",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "Name": {
+                                "type": "string",
+                                "description": "Correlation property name"
+                              },
+                              "Value": {
+                                "type": "string",
+                                "description": "Correlation property value"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "required": [
+                        "Property"
+                      ]
+                    },
+                    "description": "Message body to get properties from the message payload.",
+                    "required": true
+                  },
+                  {
+                    "name": "SL360-Stage",
+                    "in": "header",
+                    "type": "string",
+                    "description": "Provide stage name.",
+                    "required": true
+                  },
+                  {
+                    "name": "SL360-StageStatus",
+                    "type": "string",
+                    "in": "header",
+                    "description": "Select the status of stage execution.",
+                    "required": true,
+                    "x-ms-visibility": "important",
+                    "enum": [
+                      "Success",
+                      "Failure",
+                      "InProgress"
+                    ]
+                  },
+                  {
+                    "name": "SL360-ArchiveMessage",
+                    "in": "header",
+                    "type": "string",
+                    "description": "Set this flag as true to archive the message.",
+                    "required": false,
+                    "enum": [
+                      "True",
+                      "False"
+                    ]
+                  },
+                  {
+                    "name": "SL360-BusinessProcess",
+                    "in": "header",
+                    "type": "string",
+                    "description": "Provide business process name.",
+                    "required": false
+                  },
+                  {
+                    "name": "SL360-Transaction",
+                    "in": "header",
+                    "type": "string",
+                    "description": "Provide transaction name.",
+                    "required": false
+                  },
+                  {
+                    "name": "SL360-Exception",
+                    "in": "header",
+                    "type": "string",
+                    "required": false,
+                    "description": "If this stage has any exceptions."
+                  },
+                  {
+                    "name": "SL360-ExceptionCode",
+                    "in": "header",
+                    "type": "string",
+                    "required": false,
+                    "description": "If this stage has any exception code."
+                  },
+                  {
+                    "name": "SL360-BatchId",
+                    "in": "header",
+                    "type": "string",
+                    "required": false,
+                    "description": "If this logic app is a batched message provide batch id."
+                  },
+                  {
+                    "name": "SL360-IsTransactionComplete",
+                    "in": "header",
+                    "type": "string",
+                    "description": "Set this flag as true to mark the transaction instance as complete.",
+                    "required": false,
+                    "enum": [
+                      "True",
+                      "False"
+                    ]
+                  },
+                  {
+                    "name": "SL360-IgnoreNotFound",
+                    "in": "header",
+                    "type": "string",
+                    "description": "Set this flag as true to not create a transaction instance when the transaction instance matching with the provided look up properties is not found.",
+                    "required": false,
+                    "enum": [
+                      "True",
+                      "False"
+                    ]
+                  },
+                  {
+                    "name": "SL360-Workspace",
+                    "in": "header",
+                    "type": "string",
+                    "required": false,
+                    "description": "Workspace this Business Process belong to."
+                  }
+                ],
+                "responses": {
+                  "202": {
+                    "description": "Accepted",
+                    "x-ms-summary": "Returns the Stage instance id",
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "StageInstanceId": {
+                          "type": "string",
+                          "description": "Stage Instance Id"
+                        }
+                      }
+                    }
+                  }
+                },
+                "security": [
+                  {
+                    "apikeyQuery": []
+                  },
+                  {
+                    "apikeyHeader": []
+                  }
+                ]
+              }
+            }
+          },
+          "schemes": [
+            "https",
+            "http"
+          ],
+          "securityDefinitions": {
+            "apikeyQuery": {
+              "type": "apiKey",
+              "name": "code",
+              "in": "query"
+            },
+            "apikeyHeader": {
+              "type": "apiKey",
+              "name": "x-functions-key",
+              "in": "header"
+            }
+          }
+        },
+        "apiType": "Rest"
+      }
+    }
+  ]
+}

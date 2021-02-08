@@ -1,0 +1,321 @@
+[
+ {
+  "id": "189e61c5-f8f5-4149-8e88-5f10e7095569",
+  "name": "Ship Any Where Logistics",
+  "businessTransactions": [
+   {
+    "id": "f372bf4c-4cc1-45a4-90b0-5cb2f70f716c",
+    "name": "Booking Request",
+    "isFirstTransaction": false,
+    "direction": 1,
+    "isDeleted": false,
+    "stages": [
+     {
+      "id": "f2812e56-ab0c-4219-8d59-1d94a857b948",
+      "name": "Receive",
+      "isDeleted": false,
+      "stageExecutionId": 4,
+      "stageExecutionName": "Custom APIs",
+      "isFirstStage": false,
+      "stageProperties": [],
+      "isNew": false,
+      "businessTransactionId": "f372bf4c-4cc1-45a4-90b0-5cb2f70f716c",
+      "isDebatchingStage": false,
+      "isArchivingDisabled": false,
+      "reprocessConfiguration": {
+       "id": "abad4695-5fa0-4488-8eb5-2ad4f143a6e2",
+       "reprocessSettings": null,
+       "stageId": "f2812e56-ab0c-4219-8d59-1d94a857b948",
+       "lastModifiedOn": "0001-01-01T00:00:00",
+       "lastModifiedBy": null,
+       "isNew": false,
+       "isDeleted": false
+      }
+     },
+     {
+      "id": "5cb1bee4-3622-4809-8a64-3f118e7b342e",
+      "name": "Send",
+      "isDeleted": false,
+      "stageExecutionId": 4,
+      "stageExecutionName": "Custom APIs",
+      "isFirstStage": false,
+      "stageProperties": [],
+      "isNew": false,
+      "businessTransactionId": "f372bf4c-4cc1-45a4-90b0-5cb2f70f716c",
+      "isDebatchingStage": false,
+      "isArchivingDisabled": false,
+      "reprocessConfiguration": {
+       "id": "bb909bd0-e983-4f3d-a6ac-933f85e349af",
+       "reprocessSettings": null,
+       "stageId": "5cb1bee4-3622-4809-8a64-3f118e7b342e",
+       "lastModifiedOn": "0001-01-01T00:00:00",
+       "lastModifiedBy": null,
+       "isNew": false,
+       "isDeleted": false
+      }
+     },
+     {
+      "id": "3c9265ed-efa2-4379-b642-6cdb5b037bcd",
+      "name": "Process",
+      "isDeleted": false,
+      "stageExecutionId": 4,
+      "stageExecutionName": "Custom APIs",
+      "isFirstStage": false,
+      "stageProperties": [],
+      "isNew": false,
+      "businessTransactionId": "f372bf4c-4cc1-45a4-90b0-5cb2f70f716c",
+      "isDebatchingStage": false,
+      "isArchivingDisabled": false,
+      "reprocessConfiguration": {
+       "id": "fa835a04-8c02-440d-b0ef-2b7c4e83d90a",
+       "reprocessSettings": null,
+       "stageId": "3c9265ed-efa2-4379-b642-6cdb5b037bcd",
+       "lastModifiedOn": "0001-01-01T00:00:00",
+       "lastModifiedBy": null,
+       "isNew": false,
+       "isDeleted": false
+      }
+     }
+    ],
+    "isNew": false,
+    "businessProcessId": "189e61c5-f8f5-4149-8e88-5f10e7095569",
+    "defaultReprocessStageName": ""
+   },
+   {
+    "id": "038e6de7-8daa-4b47-a55f-89624d8a8e11",
+    "name": "Confirm Booking",
+    "isFirstTransaction": false,
+    "direction": 1,
+    "isDeleted": false,
+    "stages": [
+     {
+      "id": "3fd46960-f429-4261-89a0-013cfaec3a83",
+      "name": "Receive",
+      "isDeleted": false,
+      "stageExecutionId": 4,
+      "stageExecutionName": "Custom APIs",
+      "isFirstStage": false,
+      "stageProperties": [],
+      "isNew": false,
+      "businessTransactionId": "038e6de7-8daa-4b47-a55f-89624d8a8e11",
+      "isDebatchingStage": false,
+      "isArchivingDisabled": false,
+      "reprocessConfiguration": {
+       "id": "0912b210-93f2-4f5b-9742-5566ab0192c8",
+       "reprocessSettings": null,
+       "stageId": "3fd46960-f429-4261-89a0-013cfaec3a83",
+       "lastModifiedOn": "0001-01-01T00:00:00",
+       "lastModifiedBy": null,
+       "isNew": false,
+       "isDeleted": false
+      }
+     },
+     {
+      "id": "18cf5429-a713-4362-a20d-5ec558fe6133",
+      "name": "Process",
+      "isDeleted": false,
+      "stageExecutionId": 4,
+      "stageExecutionName": "Custom APIs",
+      "isFirstStage": false,
+      "stageProperties": [],
+      "isNew": false,
+      "businessTransactionId": "038e6de7-8daa-4b47-a55f-89624d8a8e11",
+      "isDebatchingStage": false,
+      "isArchivingDisabled": false,
+      "reprocessConfiguration": {
+       "id": "a5c32c3c-4baf-49eb-99dd-65a2ed685084",
+       "reprocessSettings": null,
+       "stageId": "18cf5429-a713-4362-a20d-5ec558fe6133",
+       "lastModifiedOn": "0001-01-01T00:00:00",
+       "lastModifiedBy": null,
+       "isNew": false,
+       "isDeleted": false
+      }
+     },
+     {
+      "id": "b5bfb1ec-d7dd-4366-a8fd-72e6f63f0cd0",
+      "name": "Send",
+      "isDeleted": false,
+      "stageExecutionId": 4,
+      "stageExecutionName": "Custom APIs",
+      "isFirstStage": false,
+      "stageProperties": [],
+      "isNew": false,
+      "businessTransactionId": "038e6de7-8daa-4b47-a55f-89624d8a8e11",
+      "isDebatchingStage": false,
+      "isArchivingDisabled": false,
+      "reprocessConfiguration": {
+       "id": "0828ecb2-d4ad-4244-b88e-c030be7ac9ad",
+       "reprocessSettings": null,
+       "stageId": "b5bfb1ec-d7dd-4366-a8fd-72e6f63f0cd0",
+       "lastModifiedOn": "0001-01-01T00:00:00",
+       "lastModifiedBy": null,
+       "isNew": false,
+       "isDeleted": false
+      }
+     }
+    ],
+    "isNew": false,
+    "businessProcessId": "189e61c5-f8f5-4149-8e88-5f10e7095569",
+    "defaultReprocessStageName": ""
+   },
+   {
+    "id": "7071b606-e121-4a47-aa65-898f3d874a6c",
+    "name": "Send Shipping Instructions",
+    "isFirstTransaction": false,
+    "direction": 1,
+    "isDeleted": false,
+    "stages": [
+     {
+      "id": "93082e8f-82ad-4d41-b11d-124b7a0a1dab",
+      "name": "Process",
+      "isDeleted": false,
+      "stageExecutionId": 4,
+      "stageExecutionName": "Custom APIs",
+      "isFirstStage": false,
+      "stageProperties": [],
+      "isNew": false,
+      "businessTransactionId": "7071b606-e121-4a47-aa65-898f3d874a6c",
+      "isDebatchingStage": false,
+      "isArchivingDisabled": false,
+      "reprocessConfiguration": {
+       "id": "ac1f31a4-bf78-46f0-9d4f-f53a8ea9a7b7",
+       "reprocessSettings": null,
+       "stageId": "93082e8f-82ad-4d41-b11d-124b7a0a1dab",
+       "lastModifiedOn": "0001-01-01T00:00:00",
+       "lastModifiedBy": null,
+       "isNew": false,
+       "isDeleted": false
+      }
+     },
+     {
+      "id": "632c529e-be14-411f-9d5d-0c1280322970",
+      "name": "Send",
+      "isDeleted": false,
+      "stageExecutionId": 4,
+      "stageExecutionName": "Custom APIs",
+      "isFirstStage": false,
+      "stageProperties": [],
+      "isNew": false,
+      "businessTransactionId": "7071b606-e121-4a47-aa65-898f3d874a6c",
+      "isDebatchingStage": false,
+      "isArchivingDisabled": false,
+      "reprocessConfiguration": {
+       "id": "c5119ddc-210f-4be6-a69f-d513355b61da",
+       "reprocessSettings": null,
+       "stageId": "632c529e-be14-411f-9d5d-0c1280322970",
+       "lastModifiedOn": "0001-01-01T00:00:00",
+       "lastModifiedBy": null,
+       "isNew": false,
+       "isDeleted": false
+      }
+     },
+     {
+      "id": "64185f84-7654-4b70-88c0-9b54926eb5b8",
+      "name": "Receive",
+      "isDeleted": false,
+      "stageExecutionId": 4,
+      "stageExecutionName": "Custom APIs",
+      "isFirstStage": false,
+      "stageProperties": [],
+      "isNew": false,
+      "businessTransactionId": "7071b606-e121-4a47-aa65-898f3d874a6c",
+      "isDebatchingStage": false,
+      "isArchivingDisabled": false,
+      "reprocessConfiguration": {
+       "id": "d7bd4815-d902-4017-88b7-e19317bac0ef",
+       "reprocessSettings": null,
+       "stageId": "64185f84-7654-4b70-88c0-9b54926eb5b8",
+       "lastModifiedOn": "0001-01-01T00:00:00",
+       "lastModifiedBy": null,
+       "isNew": false,
+       "isDeleted": false
+      }
+     }
+    ],
+    "isNew": false,
+    "businessProcessId": "189e61c5-f8f5-4149-8e88-5f10e7095569",
+    "defaultReprocessStageName": ""
+   },
+   {
+    "id": "2a2cb562-68f2-4e00-b212-5bd976e2834b",
+    "name": "Receive Invoice",
+    "isFirstTransaction": false,
+    "direction": 1,
+    "isDeleted": false,
+    "stages": [
+     {
+      "id": "008208c3-478f-4f27-bbc5-c3a2a0a96666",
+      "name": "Send",
+      "isDeleted": false,
+      "stageExecutionId": 4,
+      "stageExecutionName": "Custom APIs",
+      "isFirstStage": false,
+      "stageProperties": [],
+      "isNew": false,
+      "businessTransactionId": "2a2cb562-68f2-4e00-b212-5bd976e2834b",
+      "isDebatchingStage": false,
+      "isArchivingDisabled": false,
+      "reprocessConfiguration": {
+       "id": "2d132b1e-513a-49ae-a57f-db752a4fc65b",
+       "reprocessSettings": null,
+       "stageId": "008208c3-478f-4f27-bbc5-c3a2a0a96666",
+       "lastModifiedOn": "0001-01-01T00:00:00",
+       "lastModifiedBy": null,
+       "isNew": false,
+       "isDeleted": false
+      }
+     },
+     {
+      "id": "fdb3966f-1e0f-4f4b-828d-2204b9844269",
+      "name": "Receive",
+      "isDeleted": false,
+      "stageExecutionId": 4,
+      "stageExecutionName": "Custom APIs",
+      "isFirstStage": false,
+      "stageProperties": [],
+      "isNew": false,
+      "businessTransactionId": "2a2cb562-68f2-4e00-b212-5bd976e2834b",
+      "isDebatchingStage": false,
+      "isArchivingDisabled": false,
+      "reprocessConfiguration": {
+       "id": "167ad5ec-29be-49ee-a3b4-b3571eb6f054",
+       "reprocessSettings": null,
+       "stageId": "fdb3966f-1e0f-4f4b-828d-2204b9844269",
+       "lastModifiedOn": "0001-01-01T00:00:00",
+       "lastModifiedBy": null,
+       "isNew": false,
+       "isDeleted": false
+      }
+     },
+     {
+      "id": "4329308e-961e-440f-9544-8ed782057748",
+      "name": "Process",
+      "isDeleted": false,
+      "stageExecutionId": 4,
+      "stageExecutionName": "Custom APIs",
+      "isFirstStage": false,
+      "stageProperties": [],
+      "isNew": false,
+      "businessTransactionId": "2a2cb562-68f2-4e00-b212-5bd976e2834b",
+      "isDebatchingStage": false,
+      "isArchivingDisabled": false,
+      "reprocessConfiguration": {
+       "id": "b4a2b546-0608-4238-86b7-06dd5e87cdf1",
+       "reprocessSettings": null,
+       "stageId": "4329308e-961e-440f-9544-8ed782057748",
+       "lastModifiedOn": "0001-01-01T00:00:00",
+       "lastModifiedBy": null,
+       "isNew": false,
+       "isDeleted": false
+      }
+     }
+    ],
+    "isNew": false,
+    "businessProcessId": "189e61c5-f8f5-4149-8e88-5f10e7095569",
+    "defaultReprocessStageName": ""
+   }
+  ],
+  "isTrackingDisabled": false
+ }
+]
