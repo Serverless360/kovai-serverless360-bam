@@ -1,0 +1,329 @@
+{
+ "businessProcesses": [
+  {
+   "id": "6ecfe315-64ca-4c06-9605-0fcc82cf3ed3",
+   "workspaceId": "9b94c24c-61fb-469e-9e4a-48e3b711e239",
+   "name": "OrderProcessing",
+   "description": "",
+   "isTrackingEnabled": true,
+   "isMonitoringEnabled": true,
+   "createdAt": "2021-02-09T07:23:30.143",
+   "updatedAt": "2021-02-10T07:31:26.08",
+   "additionalSettings": {
+    "archiveMessage": true,
+    "overrideRunTimeConfiguration": true
+   },
+   "businessTransactions": [
+    {
+     "id": "a429db29-0470-42cf-a184-9dbcc091377f",
+     "name": "ValidateOrders",
+     "description": "",
+     "order": 0,
+     "direction": 1,
+     "stages": [
+      {
+       "id": "f7a7c89e-e40c-45f2-8613-28c8a50ebcda",
+       "name": "getOrders",
+       "eventSource": "e276f13d-cf97-4be0-a52a-c6b92be2b0b3",
+       "eventSourceName": null,
+       "isConditional": false,
+       "markTransactionAsComplete": false,
+       "markTransactionAsFailed": false,
+       "autoCompleteConditionalStage": false,
+       "stageProperties": [
+        {
+         "id": "da7bb175-3ad5-43d4-97da-0fee6ba38ada",
+         "name": "orderId",
+         "dataType": "STRING",
+         "source": 2,
+         "value": "$.orderId",
+         "extractValueRegEx": "",
+         "isGlobalProperty": false,
+         "dateFormat": null,
+         "stageId": "f7a7c89e-e40c-45f2-8613-28c8a50ebcda",
+         "globalPropertyId": null
+        }
+       ],
+       "businessTransactionId": "a429db29-0470-42cf-a184-9dbcc091377f",
+       "reprocessConfiguration": null
+      },
+      {
+       "id": "937b279f-234b-42cc-82b7-a0e957fed3b7",
+       "name": "acceptOrders",
+       "eventSource": "e276f13d-cf97-4be0-a52a-c6b92be2b0b3",
+       "eventSourceName": null,
+       "isConditional": false,
+       "markTransactionAsComplete": true,
+       "markTransactionAsFailed": true,
+       "autoCompleteConditionalStage": false,
+       "stageProperties": [],
+       "businessTransactionId": "a429db29-0470-42cf-a184-9dbcc091377f",
+       "reprocessConfiguration": null
+      },
+      {
+       "id": "7a7825e8-676e-46c5-b136-bc4e80af2c6b",
+       "name": "segregateOrders",
+       "eventSource": "e6de2045-f341-4f6e-aadb-6c60c3d5aeff",
+       "eventSourceName": null,
+       "isConditional": true,
+       "markTransactionAsComplete": false,
+       "markTransactionAsFailed": false,
+       "autoCompleteConditionalStage": false,
+       "stageProperties": [],
+       "businessTransactionId": "a429db29-0470-42cf-a184-9dbcc091377f",
+       "reprocessConfiguration": null
+      },
+      {
+       "id": "0cb7124c-be2e-4436-8a72-c212343c7f14",
+       "name": "declineOrders",
+       "eventSource": "e276f13d-cf97-4be0-a52a-c6b92be2b0b3",
+       "eventSourceName": null,
+       "isConditional": false,
+       "markTransactionAsComplete": true,
+       "markTransactionAsFailed": true,
+       "autoCompleteConditionalStage": false,
+       "stageProperties": [],
+       "businessTransactionId": "a429db29-0470-42cf-a184-9dbcc091377f",
+       "reprocessConfiguration": null
+      }
+     ],
+     "businessProcessId": "6ecfe315-64ca-4c06-9605-0fcc82cf3ed3",
+     "defaultReprocessStageName": "",
+     "configuration": {
+      "class": "serializedConfig",
+      "nodeDataArray": [
+       {
+        "name": "Start",
+        "key": "4412145f-00d6-4660-bd6d-c2ecc7dc7853",
+        "id": "4412145f-00d6-4660-bd6d-c2ecc7dc7853",
+        "category": "Start",
+        "location": {
+         "class": "go.Point",
+         "x": -165.226654,
+         "y": -314.226654
+        },
+        "stage": null
+       },
+       {
+        "name": "End",
+        "key": "2aee1a7d-16ae-4e54-86b7-2dfeee05fa97",
+        "id": "2aee1a7d-16ae-4e54-86b7-2dfeee05fa97",
+        "category": "End",
+        "location": {
+         "class": "go.Point",
+         "x": -158.377975,
+         "y": 146.622025
+        },
+        "stage": null
+       },
+       {
+        "name": "getOrders",
+        "key": "f7a7c89e-e40c-45f2-8613-28c8a50ebcda",
+        "id": "f7a7c89e-e40c-45f2-8613-28c8a50ebcda",
+        "category": "Normal",
+        "location": {
+         "class": "go.Point",
+         "x": -164.5,
+         "y": -203.5
+        },
+        "stage": null
+       },
+       {
+        "name": "segregateOrders",
+        "key": "7a7825e8-676e-46c5-b136-bc4e80af2c6b",
+        "id": "7a7825e8-676e-46c5-b136-bc4e80af2c6b",
+        "category": "Conditional",
+        "location": {
+         "class": "go.Point",
+         "x": -164,
+         "y": -88.35263
+        },
+        "stage": null
+       },
+       {
+        "name": "acceptOrders",
+        "key": "937b279f-234b-42cc-82b7-a0e957fed3b7",
+        "id": "937b279f-234b-42cc-82b7-a0e957fed3b7",
+        "category": "Normal",
+        "location": {
+         "class": "go.Point",
+         "x": -374.5,
+         "y": 33.5
+        },
+        "stage": null
+       },
+       {
+        "name": "declineOrders",
+        "key": "0cb7124c-be2e-4436-8a72-c212343c7f14",
+        "id": "0cb7124c-be2e-4436-8a72-c212343c7f14",
+        "category": "Normal",
+        "location": {
+         "class": "go.Point",
+         "x": 49.5,
+         "y": 20.5
+        },
+        "stage": null
+       }
+      ],
+      "linkDataArray": [
+       {
+        "from": "4412145f-00d6-4660-bd6d-c2ecc7dc7853",
+        "to": "f7a7c89e-e40c-45f2-8613-28c8a50ebcda",
+        "points": [
+         -165.226654,
+         -292.2592,
+         -165.226654,
+         -282.2592,
+         -165.226654,
+         -265.629578,
+         -164.5,
+         -265.629578,
+         -164.5,
+         -249,
+         -164.5,
+         -239
+        ],
+        "label": "Text",
+        "visible": false
+       },
+       {
+        "from": "f7a7c89e-e40c-45f2-8613-28c8a50ebcda",
+        "to": "7a7825e8-676e-46c5-b136-bc4e80af2c6b",
+        "points": [
+         -164.5,
+         -168,
+         -164.5,
+         -158,
+         -164.5,
+         -151,
+         -164,
+         -151,
+         -164,
+         -144,
+         -164,
+         -134
+        ],
+        "label": "Text",
+        "visible": false
+       },
+       {
+        "from": "7a7825e8-676e-46c5-b136-bc4e80af2c6b",
+        "to": "937b279f-234b-42cc-82b7-a0e957fed3b7",
+        "points": [
+         -249,
+         -88.35263,
+         -259,
+         -88.35263,
+         -286.5,
+         -88.35263,
+         -286.5,
+         33.5,
+         -314,
+         33.5,
+         -324,
+         33.5
+        ],
+        "label": "Text",
+        "visible": true
+       },
+       {
+        "from": "7a7825e8-676e-46c5-b136-bc4e80af2c6b",
+        "to": "0cb7124c-be2e-4436-8a72-c212343c7f14",
+        "points": [
+         -79,
+         -88.35263,
+         -69,
+         -88.35263,
+         -40,
+         -88.35263,
+         -40,
+         20.5,
+         -11,
+         20.5,
+         -1,
+         20.5
+        ],
+        "label": "Text",
+        "visible": true
+       },
+       {
+        "from": "937b279f-234b-42cc-82b7-a0e957fed3b7",
+        "to": "2aee1a7d-16ae-4e54-86b7-2dfeee05fa97",
+        "points": [
+         -324,
+         33.5,
+         -314,
+         33.5,
+         -251.43898,
+         33.5,
+         -251.43898,
+         146.622025,
+         -188.877975,
+         146.622025,
+         -178.877975,
+         146.622025
+        ],
+        "label": "Text",
+        "visible": false
+       },
+       {
+        "from": "0cb7124c-be2e-4436-8a72-c212343c7f14",
+        "to": "2aee1a7d-16ae-4e54-86b7-2dfeee05fa97",
+        "points": [
+         -1,
+         20.5,
+         -11,
+         20.5,
+         -69.43899,
+         20.5,
+         -69.43899,
+         146.622025,
+         -127.877975,
+         146.622025,
+         -137.877975,
+         146.622025
+        ],
+        "label": "Text",
+        "visible": false
+       }
+      ]
+     },
+     "serializedConfig": null,
+     "purgeDays": 180,
+     "createdAt": "0001-01-01T00:00:00",
+     "updatedAt": "0001-01-01T00:00:00"
+    }
+   ],
+   "monitorConfiguration": {
+    "evaluationFrequency": 2,
+    "recipients": "aiyappan.subramanian@kovai.co",
+    "notificationChannels": [],
+    "exceptionAlertSettings": {
+     "sendExceptionAlerts": true,
+     "maximumNumberOfAlerts": 3,
+     "duration": 15,
+     "durationTimeGrain": 1,
+     "perTransaction": true,
+     "perExceptionCode": true
+    },
+    "maxAlertsPerHour": 3,
+    "currentAlertHour": "2021-02-08T07:23:30.1439622Z",
+    "notificationCount": 0,
+    "lastRunAt": "2021-02-08T07:23:30.1439622Z"
+   },
+   "isMonitorProcessing": false,
+   "monitorProcessingStartedAt": "0001-01-01T00:00:00"
+  }
+ ],
+ "globalProperties": [
+  {
+   "id": "7060e58a-5af5-404c-8da7-f556cc109dbc",
+   "workspaceId": "9b94c24c-61fb-469e-9e4a-48e3b711e239",
+   "name": "customerId",
+   "dataType": "STRING",
+   "dateFormat": "",
+   "createdAt": "2021-02-09T07:37:53.093",
+   "updatedAt": "2021-02-09T07:37:53.093"
+  }
+ ]
+}
