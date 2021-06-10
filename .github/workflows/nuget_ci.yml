@@ -25,12 +25,13 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.x
-        source-url: https://api.nuget.org/v3/index.json
       env:
         NUGET_AUTH_TOKEN: ${{secrets.NUGET_KEY}}
     - name: Build
       run: dotnet build --configuration Release
     - name: Pack
       run: dotnet pack Kovai.Serverless360.Bam/Kovai.Serverless360.Bam.csproj --output nuget-packages --configuration Release
+    - name: SetApiKey
+      run: dotnet nuget setapikey ${{secrets.NUGET_KEY}}
     - name: Push
       run: dotnet nuget push **/*.nupkg --skip-duplicate --source https://api.nuget.org/v3/index.json
