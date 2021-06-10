@@ -36,7 +36,5 @@ jobs:
       with:
          nuget-api-key: ${{ secrets.NUGET_KEY }}
          nuget-version: '5.x'
-    - name: SetApiKey
-      run: nuget setapikey "$nuget-api-key"
     - name: Push
-      run: nuget push **/*.nupkg --skip-duplicate --source https://api.nuget.org/v3/index.json
+      run: nuget push **/*.nupkg --skip-duplicate --source https://api.nuget.org/v3/index.json -ApiKey ${{secrets.NUGET_KEY}}
