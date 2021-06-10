@@ -32,6 +32,6 @@ jobs:
     - name: Pack
       run: dotnet pack Kovai.Serverless360.Bam/Kovai.Serverless360.Bam.csproj --output nuget-packages --configuration Release
     - name: SetApiKey
-      run: dotnet nuget setapikey ${{secrets.NUGET_KEY}}
+      run: dotnet nuget setapikey "$NUGET_AUTH_TOKEN"
     - name: Push
       run: dotnet nuget push **/*.nupkg --skip-duplicate --source https://api.nuget.org/v3/index.json
