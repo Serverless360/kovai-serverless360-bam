@@ -31,7 +31,12 @@ jobs:
       run: dotnet build --configuration Release
     - name: Pack
       run: dotnet pack Kovai.Serverless360.Bam/Kovai.Serverless360.Bam.csproj --output nuget-packages --configuration Release
+    - name: Setup NuGet.exe for use with actions
+      uses: NuGet/setup-nuget@v1.0.5
+      with:
+         nuget-api-key: ${{ secrets.NUGET_KEY }}
+         nuget-version: '5.x'
     - name: SetApiKey
-      run: dotnet nuget setapikey $NUGET_AUTH_TOKEN
+      run: nuget setapikey $nuget-api-key
     - name: Push
-      run: dotnet nuget push **/*.nupkg --skip-duplicate --source https://api.nuget.org/v3/index.json
+      run: nuget push **/*.nupkg --skip-duplicate --source https://api.nuget.org/v3/index.json
