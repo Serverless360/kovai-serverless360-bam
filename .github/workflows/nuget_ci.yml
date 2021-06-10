@@ -33,4 +33,4 @@ jobs:
     - name: Pack
       run: dotnet pack Kovai.Serverless360.Bam/Kovai.Serverless360.Bam.csproj --output nuget-packages --configuration Release
     - name: Push
-      run: dotnet nuget push **/*.nupkg --skip-duplicate --source https://nuget.pkg.github.com/<owner>/index.json
+      run: dotnet nuget push **/*.nupkg --skip-duplicate --source https://api.nuget.org/v3/index.json
