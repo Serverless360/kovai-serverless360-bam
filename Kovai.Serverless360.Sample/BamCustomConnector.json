@@ -149,6 +149,17 @@
                     "description": "If this stage has any exception code."
                   },
                   {
+                    "name": "SL360-IsBatchedTransaction",
+                    "in": "header",
+                    "type": "string",
+                    "description": "Set this flag as true to declare this transaction instance as batched transaction.",
+                    "required": false,
+                    "enum": [
+                      "True",
+                      "False"
+                    ]
+                  },
+                  {
                     "name": "SL360-BatchId",
                     "in": "header",
                     "type": "string",
@@ -295,13 +306,6 @@
                     "type": "string",
                     "required": false,
                     "description": "If this stage has any exception code."
-                  },
-                  {
-                    "name": "SL360-BatchId",
-                    "in": "header",
-                    "type": "string",
-                    "required": false,
-                    "description": "If this logic app is a batched message provide batch id."
                   },
                   {
                     "name": "SL360-IsTransactionComplete",
@@ -459,13 +463,6 @@
                     "type": "string",
                     "required": false,
                     "description": "If this stage has any exception code."
-                  },
-                  {
-                    "name": "SL360-BatchId",
-                    "in": "header",
-                    "type": "string",
-                    "required": false,
-                    "description": "If this logic app is a batched message provide batch id."
                   },
                   {
                     "name": "SL360-IsTransactionComplete",

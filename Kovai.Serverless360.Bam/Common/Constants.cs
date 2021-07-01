@@ -16,6 +16,7 @@
       public const string TransactionInstanceId = "SL360-TransactionInstanceId";
       public const string StageInstanceId = "SL360-StageInstanceId";
       public const string ArchiveMessage = "SL360-ArchiveMessage";
+      public const string IsBatchedTransaction = "SL360-IsBatchedTransaction";
       public const string BatchId = "SL360-BatchId";
       public const string StageStatus = "SL360-StageStatus";
       public const string ExceptionMessage = "SL360-Exception";
