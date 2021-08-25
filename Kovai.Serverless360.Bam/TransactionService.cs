@@ -75,6 +75,7 @@ namespace Kovai.Serverless360.Bam
                 var header = transactionRequest.MessageHeader.DeSerialize<Dictionary<string, string>>();
                 if (header != null)
                     header["Content-Type"] = "application/json";
+                header["x-functions-key"] = _key;
                 var body = new MessageContent
                 {
                     MessageBody = transactionRequest.MessageBody,
@@ -82,7 +83,7 @@ namespace Kovai.Serverless360.Bam
                 };
 
 
-                var uri = $"{_url}/api/{Constants.Operations.StartTransaction}?code={_key}";
+                var uri = $"{_url}/api/{Constants.Operations.StartTransaction}";
                 var data = body.Serialize();
                 var response = await _client.PostAsync(uri, new StringContent(data, Encoding.UTF8, "application/json"));
                 if (response.IsSuccessStatusCode)
@@ -126,13 +127,14 @@ namespace Kovai.Serverless360.Bam
                 var header = checkPointRequest.MessageHeader.DeSerialize<Dictionary<string, object>>();
                 if (header != null)
                     header["Content-Type"] = "application/json";
+                header["x-functions-key"] = _key;
                 var body = new MessageContent
                 {
                     MessageBody = checkPointRequest.MessageBody,
                     MessageHeader = header?.Serialize()
                 };
 
-                var uri = $"{_url}/api/{Constants.Operations.CheckPoint}?code={_key}";
+                var uri = $"{_url}/api/{Constants.Operations.CheckPoint}";
 
                 var data = body.Serialize();
                 var response = await _client.PostAsync(uri, new StringContent(data, Encoding.UTF8, "application/json"));
@@ -180,6 +182,7 @@ namespace Kovai.Serverless360.Bam
                 var header = correlationCheckPointRequest.MessageHeader.DeSerialize<Dictionary<string, object>>();
                 if (header != null)
                     header["Content-Type"] = "application/json";
+                header["x-functions-key"] = _key;
                 var body = new MessageContent
                 {
                     MessageBody = correlationCheckPointRequest.MessageBody,
@@ -187,7 +190,7 @@ namespace Kovai.Serverless360.Bam
                     Property = correlationCheckPointRequest.CorrelationProperties.Select(c => new Property() { Name = c.Key, Value = c.Value }).ToList()
                 };
 
-                var uri = $"{_url}/api/{Constants.Operations.CorrelationCheckPoint}?code={_key}";
+                var uri = $"{_url}/api/{Constants.Operations.CorrelationCheckPoint}";
 
                 var data = body.Serialize();
                 var content = await _client.PostAsync(uri, new StringContent(data, Encoding.UTF8, "application/json"));
