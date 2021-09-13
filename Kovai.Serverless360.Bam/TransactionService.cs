@@ -76,6 +76,7 @@ namespace Kovai.Serverless360.Bam
                 if (header != null)
                     header["Content-Type"] = "application/json";
                 header["x-functions-key"] = _key;
+                header["SL360-ExecutedAt"] = "custom";
                 var body = new MessageContent
                 {
                     MessageBody = transactionRequest.MessageBody,
@@ -128,6 +129,7 @@ namespace Kovai.Serverless360.Bam
                 if (header != null)
                     header["Content-Type"] = "application/json";
                 header["x-functions-key"] = _key;
+                header["SL360-ExecutedAt"] = "custom";
                 var body = new MessageContent
                 {
                     MessageBody = checkPointRequest.MessageBody,
@@ -183,6 +185,7 @@ namespace Kovai.Serverless360.Bam
                 if (header != null)
                     header["Content-Type"] = "application/json";
                 header["x-functions-key"] = _key;
+                header["SL360-ExecutedAt"] = "custom";
                 var body = new MessageContent
                 {
                     MessageBody = correlationCheckPointRequest.MessageBody,
