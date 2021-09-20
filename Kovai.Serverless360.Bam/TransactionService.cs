@@ -67,6 +67,7 @@ namespace Kovai.Serverless360.Bam
                 _client.DefaultRequestHeaders.AddOrReplace(Constants.Headers.BatchId, transactionRequest.BatchId);
                 _client.DefaultRequestHeaders.AddOrReplace(Constants.Headers.IsTransactionComplete, transactionRequest.IsTransactionComplete != null ? Convert.ToString(transactionRequest.IsTransactionComplete) : null);
                 _client.DefaultRequestHeaders.AddOrReplace(Constants.Headers.ExecutedAt, "custom");
+                _client.DefaultRequestHeaders.AddOrReplace(Constants.Headers.Key, _key);
 
                 if (transactionRequest.MessageHeader == null)
                     transactionRequest.MessageHeader = "{\"Content-Type\":\"application/json\"}";
@@ -76,7 +77,6 @@ namespace Kovai.Serverless360.Bam
                 var header = transactionRequest.MessageHeader.DeSerialize<Dictionary<string, string>>();
                 if (header != null)
                     header["Content-Type"] = "application/json";
-                header["x-functions-key"] = _key;
                 var body = new MessageContent
                 {
                     MessageBody = transactionRequest.MessageBody,
@@ -119,6 +119,7 @@ namespace Kovai.Serverless360.Bam
                 _client.DefaultRequestHeaders.AddOrReplace(Constants.Headers.ExceptionCode, checkPointRequest.ExceptionCode);
                 _client.DefaultRequestHeaders.AddOrReplace(Constants.Headers.IsTransactionComplete, checkPointRequest.IsTransactionComplete != null ? Convert.ToString(checkPointRequest.IsTransactionComplete) : null);
                 _client.DefaultRequestHeaders.AddOrReplace(Constants.Headers.ExecutedAt, "custom");
+                _client.DefaultRequestHeaders.AddOrReplace(Constants.Headers.Key, _key);
 
 
                 if (checkPointRequest.MessageHeader == null)
@@ -129,7 +130,6 @@ namespace Kovai.Serverless360.Bam
                 var header = checkPointRequest.MessageHeader.DeSerialize<Dictionary<string, object>>();
                 if (header != null)
                     header["Content-Type"] = "application/json";
-                header["x-functions-key"] = _key;
                 var body = new MessageContent
                 {
                     MessageBody = checkPointRequest.MessageBody,
@@ -173,6 +173,7 @@ namespace Kovai.Serverless360.Bam
                 _client.DefaultRequestHeaders.AddOrReplace(Constants.Headers.Transaction, correlationCheckPointRequest.Transaction);
                 _client.DefaultRequestHeaders.AddOrReplace(Constants.Headers.IgnoreNotFound, Convert.ToString(correlationCheckPointRequest.IgnoreNotFound));
                 _client.DefaultRequestHeaders.AddOrReplace(Constants.Headers.ExecutedAt, "custom");
+                _client.DefaultRequestHeaders.AddOrReplace(Constants.Headers.Key, _key);
 
 
                 if (correlationCheckPointRequest.MessageHeader == null)
@@ -185,7 +186,6 @@ namespace Kovai.Serverless360.Bam
                 var header = correlationCheckPointRequest.MessageHeader.DeSerialize<Dictionary<string, object>>();
                 if (header != null)
                     header["Content-Type"] = "application/json";
-                header["x-functions-key"] = _key;
                 var body = new MessageContent
                 {
                     MessageBody = correlationCheckPointRequest.MessageBody,
