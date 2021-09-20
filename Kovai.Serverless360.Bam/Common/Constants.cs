@@ -23,6 +23,7 @@
       public const string ExceptionCode = "SL360-ExceptionCode";
       public const string IsTransactionComplete = "SL360-IsTransactionComplete";
       public const string IgnoreNotFound = "SL360-IgnoreNotFound";
+      public const string ExecutedAt = "SL360-ExecutedAt";
     }
 
     internal class Operations
