@@ -70,6 +70,15 @@ namespace Kovai.Serverless360.Bam
     public StageStatus? StageStatus { get; set; }
 
     /// <summary>
+    /// Gets or sets the value to check whether this stage instance is batched.
+    /// </summary>
+    /// <value>
+    /// The is batched transaction.
+    /// </value>
+    [DataMember]
+    public bool? IsBatchedStage { get; set; }
+
+    /// <summary>
     /// Gets or sets the is transaction complete.
     /// </summary>
     /// <value>

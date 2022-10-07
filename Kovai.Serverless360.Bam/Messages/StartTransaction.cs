@@ -53,14 +53,16 @@ namespace Kovai.Serverless360.Bam
         /// </value>
         [DataMember]
         public bool ArchiveMessage { get; set; }
+        
         /// <summary>
-        /// Gets or sets the is batched transaction.
+        /// Gets or sets the value to check whether this transaction instance is batched.
         /// </summary>
         /// <value>
         /// The is batched transaction.
         /// </value>
         [DataMember]
         public bool? IsBatchedTransaction { get; set; }
+
         /// <summary>
         /// Gets or sets the batch identifier.
         /// </summary>
@@ -69,6 +71,24 @@ namespace Kovai.Serverless360.Bam
         /// </value>
         [DataMember]
         public string BatchId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the value to check whether this stage instance is batched.
+        /// </summary>
+        /// <value>
+        /// The is batched transaction.
+        /// </value>
+        [DataMember]
+        public bool? IsBatchedStage { get; set; }
+
+        /// <summary>
+        /// Gets or sets the stage batch identifier.
+        /// </summary>
+        /// <value>
+        /// The batch identifier.
+        /// </value>
+        [DataMember]
+        public string StageBatchId { get; set; }
 
         /// <summary>
         /// Gets or sets the stage status.
