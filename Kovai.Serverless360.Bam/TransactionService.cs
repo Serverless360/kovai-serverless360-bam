@@ -64,8 +64,8 @@ namespace Kovai.Serverless360.Bam
                 _client.DefaultRequestHeaders.AddOrReplace(Constants.Headers.ExceptionMessage, transactionRequest.ExceptionMessage);
                 _client.DefaultRequestHeaders.AddOrReplace(Constants.Headers.ExceptionCode, transactionRequest.ExceptionCode);
                 _client.DefaultRequestHeaders.AddOrReplace(Constants.Headers.IsBatchedTransaction, transactionRequest.IsBatchedTransaction != null ? Convert.ToString(transactionRequest.IsBatchedTransaction) : null);
-                _client.DefaultRequestHeaders.AddOrReplace(Constants.Headers.IsBatchedStage, transactionRequest.IsBatchedStage != null ? Convert.ToString(transactionRequest.IsBatchedStage) : null);
                 _client.DefaultRequestHeaders.AddOrReplace(Constants.Headers.BatchId, transactionRequest.BatchId);
+                _client.DefaultRequestHeaders.AddOrReplace(Constants.Headers.IsBatchedStage, transactionRequest.IsBatchedStage != null ? Convert.ToString(transactionRequest.IsBatchedStage) : null);
                 _client.DefaultRequestHeaders.AddOrReplace(Constants.Headers.StageBatchId, transactionRequest.StageBatchId);
                 _client.DefaultRequestHeaders.AddOrReplace(Constants.Headers.IsTransactionComplete, transactionRequest.IsTransactionComplete != null ? Convert.ToString(transactionRequest.IsTransactionComplete) : null);
                 _client.DefaultRequestHeaders.AddOrReplace(Constants.Headers.ExecutedAt, "custom");
