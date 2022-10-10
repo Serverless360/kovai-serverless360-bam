@@ -15,7 +15,7 @@
     <RepositoryType>Git</RepositoryType>
     <PackageProjectUrl>https://serverless360.com</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Serverless360/serverless360-bam-lib</RepositoryUrl>
-    <Version>1.0.6</Version>
+    <Version>1.0.7</Version>
   </PropertyGroup>
 
   <ItemGroup>
