@@ -32,7 +32,7 @@ jobs:
     - name: Pack
       run: dotnet pack Kovai.Serverless360.Bam/Kovai.Serverless360.Bam.csproj --output nuget-packages --configuration Release
     - name: Use NuGet.exe
-      uses: NuGet/setup-nuget@v1.0.5
+      uses: NuGet/setup-nuget@v1.0.6
       with:
          nuget-api-key: ${{ secrets.NUGET_KEY }}
          nuget-version: '5.x'
