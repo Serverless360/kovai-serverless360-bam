@@ -56,9 +56,11 @@ namespace Kovai.Serverless360.Bam
             {
                 transactionRequest.Validate();
 
+                _client.DefaultRequestHeaders.Clear();
                 _client.DefaultRequestHeaders.AddOrReplace(Constants.Headers.BusinessProcess, transactionRequest.BusinessProcess);
                 _client.DefaultRequestHeaders.AddOrReplace(Constants.Headers.Transaction, transactionRequest.Transaction);
-                _client.DefaultRequestHeaders.AddOrReplace(Constants.Headers.Stage, transactionRequest.Stage);
+                if (!string.IsNullOrEmpty(transactionRequest.Stage))
+                    _client.DefaultRequestHeaders.AddOrReplace(Constants.Headers.Stage, transactionRequest.Stage);
                 _client.DefaultRequestHeaders.AddOrReplace(Constants.Headers.ArchiveMessage, Convert.ToString(transactionRequest.ArchiveMessage));
                 _client.DefaultRequestHeaders.AddOrReplace(Constants.Headers.StageStatus, transactionRequest.StageStatus?.ToString());
                 _client.DefaultRequestHeaders.AddOrReplace(Constants.Headers.ExceptionMessage, transactionRequest.ExceptionMessage);
@@ -91,7 +93,13 @@ namespace Kovai.Serverless360.Bam
                 var response = await _client.PostAsync(uri, new StringContent(data, Encoding.UTF8, "application/json"));
                 if (response.IsSuccessStatusCode)
                 {
-                    result = await response.Content.ReadAsJsonAsync<FunctionResponse>();
+                    var responseContent = await response.Content.ReadAsJsonAsync<ApiResponse>();
+                    result = new FunctionResponse
+                    {
+                        TransactionInstanceId = Guid.Parse(responseContent.TransactionInstanceId),
+                        StageInstanceId = string.IsNullOrEmpty(responseContent.StageInstanceId) ? Guid.Empty : Guid.Parse(responseContent.StageInstanceId),
+                        Result = responseContent.Result
+                    };
                 }
             }
             catch (Exception ex)

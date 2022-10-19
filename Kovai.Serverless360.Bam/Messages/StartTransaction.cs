@@ -53,7 +53,7 @@ namespace Kovai.Serverless360.Bam
         /// </value>
         [DataMember]
         public bool ArchiveMessage { get; set; }
-        
+
         /// <summary>
         /// Gets or sets the value to check whether this transaction instance is batched.
         /// </summary>
@@ -138,8 +138,6 @@ namespace Kovai.Serverless360.Bam
         {
             if (BusinessProcess.IsNullOrEmpty()) throw new InvalidBusinessProcessException();
             if (Transaction.IsNullOrEmpty()) throw new InvalidTransactionNameException();
-            if (Stage.IsNullOrEmpty()) throw new InvalidStageNameException();
-
         }
     }
 
@@ -162,5 +160,41 @@ namespace Kovai.Serverless360.Bam
         /// </value>
         [DataMember]
         public Guid StageInstanceId { get; set; }
+        /// <summary>
+        /// Gets or sets the result.
+        /// </summary>
+        /// <value>
+        /// Result.
+        /// </value>
+        [DataMember]
+        public string Result { get; set; }
+    }
+
+    public class ApiResponse
+    {
+        /// <summary>
+        /// Gets or sets the transaction instance identifier.
+        /// </summary>
+        /// <value>
+        /// The transaction instance identifier.
+        /// </value>
+        [DataMember]
+        public string TransactionInstanceId { get; set; }
+        /// <summary>
+        /// Gets or sets the stage instance identifier.
+        /// </summary>
+        /// <value>
+        /// The stage instance identifier.
+        /// </value>
+        [DataMember]
+        public string StageInstanceId { get; set; }
+        /// <summary>
+        /// Gets or sets the result.
+        /// </summary>
+        /// <value>
+        /// Result.
+        /// </value>
+        [DataMember]
+        public string Result { get; set; }
     }
 }
