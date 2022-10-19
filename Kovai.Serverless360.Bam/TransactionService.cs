@@ -102,7 +102,7 @@ namespace Kovai.Serverless360.Bam
                     };
                 }
             }
-            catch (Exception ex)
+            catch
             {
             }
             return result;
@@ -156,7 +156,7 @@ namespace Kovai.Serverless360.Bam
                     result = await response.Content.ReadAsJsonAsync<FunctionResponse>();
                 }
             }
-            catch (Exception ex)
+            catch
             {
             }
 
@@ -214,7 +214,7 @@ namespace Kovai.Serverless360.Bam
                 var content = await _client.PostAsync(uri, new StringContent(data, Encoding.UTF8, "application/json"));
                 return content.IsSuccessStatusCode;
             }
-            catch (Exception ex)
+            catch
             {
             }
 
