@@ -126,6 +126,15 @@ namespace Kovai.Serverless360.Bam
         [DataMember]
         public string ExceptionCode { get; set; }
 
+        /// <summary>
+        /// Gets or sets the Transaction Instance Id.
+        /// </summary>
+        /// <value>
+        /// The is Transaction Instance Id.
+        /// </value>
+        [DataMember]
+        public Guid? TransactionInstanceId { get; set; }
+
 
         /// <summary>
         /// Validates this instance.

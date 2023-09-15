@@ -61,6 +61,10 @@ namespace Kovai.Serverless360.Bam
                 _client.DefaultRequestHeaders.AddOrReplace(Constants.Headers.Transaction, transactionRequest.Transaction);
                 if (!string.IsNullOrEmpty(transactionRequest.Stage))
                     _client.DefaultRequestHeaders.AddOrReplace(Constants.Headers.Stage, transactionRequest.Stage);
+                if (transactionRequest.TransactionInstanceId.HasValue && transactionRequest.TransactionInstanceId.Value != Guid.Empty)
+                {
+                    _client.DefaultRequestHeaders.AddOrReplace(Constants.Headers.TransactionInstanceId, transactionRequest.TransactionInstanceId.Value.ToString());
+                }
                 _client.DefaultRequestHeaders.AddOrReplace(Constants.Headers.ArchiveMessage, Convert.ToString(transactionRequest.ArchiveMessage));
                 _client.DefaultRequestHeaders.AddOrReplace(Constants.Headers.StageStatus, transactionRequest.StageStatus?.ToString());
                 _client.DefaultRequestHeaders.AddOrReplace(Constants.Headers.ExceptionMessage, transactionRequest.ExceptionMessage);
