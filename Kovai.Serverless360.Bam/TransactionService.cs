@@ -36,6 +36,19 @@ namespace Kovai.Serverless360.Bam
         /// Initializes a new instance of the <see cref="TransactionService"/> class.
         /// </summary>
         /// <param name="key">The key.</param>
+        /// <param name="url">The URL.</param>
+        /// <param name="client">The key.</param>
+        public TransactionService(string key, string url, HttpClient client)
+        {
+            _key = key;
+            _url = url;
+            _client = client;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TransactionService"/> class.
+        /// </summary>
+        /// <param name="key">The key.</param>
         /// <param name="client">The client.</param>
         internal TransactionService(string key, HttpClient client)
         {
